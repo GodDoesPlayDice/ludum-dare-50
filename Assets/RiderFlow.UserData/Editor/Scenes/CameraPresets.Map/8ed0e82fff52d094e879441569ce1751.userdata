@@ -12,6 +12,19 @@
     "directionW": 0.189523563,
     "zoom": 5.0569973
   },
+  "947badb91aabe46b88871a3a41685f38": {
+    "sceneGuid": "8ed0e82fff52d094e879441569ce1751",
+    "uniqueCameraId": "947badb91aabe46b88871a3a41685f38",
+    "name": "up",
+    "pointX": -0.520147741,
+    "pointY": 4.8272953,
+    "pointZ": -3.603438,
+    "directionX": 0.520041645,
+    "directionY": -0.00383987115,
+    "directionZ": 0.00233193161,
+    "directionW": 0.8541484,
+    "zoom": 1.97266781
+  },
   "02c255d6697ad4b51b3893c036b6cc89": {
     "sceneGuid": "8ed0e82fff52d094e879441569ce1751",
     "uniqueCameraId": "02c255d6697ad4b51b3893c036b6cc89",
