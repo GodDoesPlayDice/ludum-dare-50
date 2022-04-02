@@ -1,15 +1,28 @@
 {
-  "0cedc63e23aa24d048fdacc85ec84b88": {
+  "ad2f2db10b3f64b1c82df11cd919034e": {
     "sceneGuid": "8ed0e82fff52d094e879441569ce1751",
-    "uniqueCameraId": "0cedc63e23aa24d048fdacc85ec84b88",
+    "uniqueCameraId": "ad2f2db10b3f64b1c82df11cd919034e",
+    "name": "temp anim look",
+    "pointX": -1.61482477,
+    "pointY": -2.87392664,
+    "pointZ": -5.99387932,
+    "directionX": 0.048070278,
+    "directionY": 0.950614035,
+    "directionZ": -0.241109148,
+    "directionW": 0.189523563,
+    "zoom": 5.0569973
+  },
+  "02c255d6697ad4b51b3893c036b6cc89": {
+    "sceneGuid": "8ed0e82fff52d094e879441569ce1751",
+    "uniqueCameraId": "02c255d6697ad4b51b3893c036b6cc89",
     "name": "temp foot",
-    "pointX": 4.97260761,
-    "pointY": -1.41497409,
-    "pointZ": -2.04796,
-    "directionX": 0.04945835,
-    "directionY": 0.7762369,
-    "directionZ": -0.06136705,
-    "directionW": 0.6255195,
+    "pointX": 4.56671953,
+    "pointY": -1.23333538,
+    "pointZ": -0.7518964,
+    "directionX": 0.05019419,
+    "directionY": 0.735569358,
+    "directionZ": -0.0548218824,
+    "directionW": 0.673381746,
     "zoom": 5.0569973
   }
 }
