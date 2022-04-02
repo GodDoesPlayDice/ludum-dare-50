@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace __Game.Scripts.Actors
@@ -21,6 +20,7 @@ namespace __Game.Scripts.Actors
 
         private Rigidbody myRb;
         private static readonly int AnimMovement = Animator.StringToHash("horizontal speed");
+        private static readonly int Acceleration = Animator.StringToHash("acceleration");
 
         #endregion
 
@@ -29,6 +29,7 @@ namespace __Game.Scripts.Actors
         private void Awake()
         {
             myRb = GetComponent<Rigidbody>();
+            Application.targetFrameRate = 60;
         }
 
         private void Update()
@@ -44,13 +45,21 @@ namespace __Game.Scripts.Actors
             {
                 accelerationPercent = Mathf.Clamp01((Time.time - movementStartTime) / accelerationTime);
             }
+            Debug.Log(accelerationPercent);
         }
 
         private void FixedUpdate()
         {
+            var speed = horizontalInput * movementSpeed * accelerationPercent;
             if (horizontalInput != 0)
-                myRb.velocity = new Vector3(horizontalInput * movementSpeed * accelerationPercent * Time.fixedDeltaTime,
-                    0, 0);
+            {
+                myRb.velocity = new Vector3(speed * Time.fixedDeltaTime, 0, 0);
+            }
+            else
+            {
+                myRb.velocity = Vector3.zero;
+            }
+                
         }
 
         #endregion
