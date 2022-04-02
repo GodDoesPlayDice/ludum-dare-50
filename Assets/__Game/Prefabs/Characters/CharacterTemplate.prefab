@@ -57,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4892025576295093198}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -81,7 +81,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &1282990714927540973
 CapsuleCollider:
@@ -94,9 +94,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.22589746
-  m_Height: 1.7697976
+  m_Height: 1.7282205
   m_Direction: 1
-  m_Center: {x: -0.0016219318, y: 0.8857311, z: 0}
+  m_Center: {x: -0.0016219318, y: 0.90651965, z: 0}
 --- !u!195 &665228522348852582
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -214,8 +214,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5595444175476242312}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a089c2b43a0c3432b8504329131d9098, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 83977fd182120468ea9502f8af291b55, type: 3}
+  m_Controller: {fileID: 22100000, guid: c21f2084c8cd84d7d81e0701e588adee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

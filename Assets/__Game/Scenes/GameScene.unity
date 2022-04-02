@@ -598,7 +598,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.938063, y: 1}
+    m_SensorSize: {x: 1.4274048, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -653,7 +653,7 @@ Transform:
   m_Children:
   - {fileID: 1581911802}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1453849862
 GameObject:
@@ -686,7 +686,7 @@ Transform:
   - {fileID: 45389905}
   - {fileID: 1553033259}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1553033258
 GameObject:
@@ -756,7 +756,7 @@ Transform:
   m_Children:
   - {fileID: 228576375}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1769796840 stripped
 Transform:
