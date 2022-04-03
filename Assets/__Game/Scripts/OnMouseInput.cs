@@ -16,14 +16,12 @@ namespace __Game.Scripts
 
         public void OnPointerEnter(PointerEventData pointerEventData)
         {
-            interactableController.IsBeingPointed = true;
-            interactableController.ToBeingPointedMode();
+            interactableController?.ToBeingPointedMode();
         }
 
         public void OnPointerExit(PointerEventData pointerEventData)
         {
-            interactableController.IsBeingPointed = false;
-            interactableController.ToNotBeingPointedMode();
+            interactableController?.ToNotBeingPointedMode();
         }
 
         public void OnPointerClick(PointerEventData pointerEventData)

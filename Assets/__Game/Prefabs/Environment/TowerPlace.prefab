@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTowerTransform: {fileID: 1842786999169909557}
+  meshRenderer: {fileID: 7007804505087576647}
 --- !u!114 &-3124137151168005843
 MonoBehaviour:
   m_ObjectHideFlags: 0

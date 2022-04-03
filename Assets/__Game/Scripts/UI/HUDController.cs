@@ -13,9 +13,9 @@ namespace __Game.Scripts.UI
 
         #region MonoBehaviour
 
-        public void ShowBuildMenu()
+        public void ToggleBuildMenu(bool enable)
         {
-            buildMenu.SetActive(true);
+            buildMenu.SetActive(enable);
         }
 
         #endregion

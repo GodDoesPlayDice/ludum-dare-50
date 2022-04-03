@@ -8,8 +8,9 @@ namespace __Game.Scripts.Towers
         #region Inspector
 
         public InteractableType InteractableType { get; set; } = InteractableType.Tower;
-        public bool IsBeingPointed { get; set; } = false;
         [SerializeField] private GameObject projectile;
+
+        [SerializeField] private MeshRenderer attackRadiusMeshRenderer;
 
         [Header("Combat settings")] [SerializeField]
         private float baseAttackRadius = 3;
@@ -22,12 +23,12 @@ namespace __Game.Scripts.Towers
 
         public void ToBeingPointedMode()
         {
-            transform.localScale = Vector3.one * 2; 
+            attackRadiusMeshRenderer.enabled = true;
         }
 
         public void ToNotBeingPointedMode()
         {
-            transform.localScale = Vector3.one; 
+            attackRadiusMeshRenderer.enabled = false;
         }
 
         public void Interact(Vector3? atPosition)

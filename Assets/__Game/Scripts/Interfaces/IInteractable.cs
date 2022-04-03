@@ -24,6 +24,5 @@ namespace __Game.Scripts.Interfaces
         }
 
         public InteractableType InteractableType { get; set; }
-        public bool IsBeingPointed { get; set; }
     }
 }
