@@ -1,4 +1,6 @@
+using System;
 using __Game.Scripts.Interfaces;
+using __Game.Scripts.UI;
 using UnityEngine;
 
 namespace __Game.Scripts.Towers
@@ -7,19 +9,41 @@ namespace __Game.Scripts.Towers
     {
         #region Inspector
 
-        public InteractableType InteractableType { get; set; } = InteractableType.Tower;
         [SerializeField] private GameObject projectile;
-
         [SerializeField] private MeshRenderer attackRadiusMeshRenderer;
-
-        [Header("Combat settings")] [SerializeField]
-        private float baseAttackRadius = 3;
-
+        
+        [Space]
+        [Header("Combat settings")] 
+        [Space]
+        
+        [SerializeField] private float baseAttackRadius = 3;
         [SerializeField] private float baseAttackRate = 1f;
 
         #endregion
 
+        #region Fields
+
+        public InteractableType InteractableType { get; set; } = InteractableType.Tower;
+        public TowerPlaceController towerPlaceController;
+        
+        private HUDController myHUDController;
+        private TowerMenuController myTowerMenuController;
+
+        #endregion
+
         #region MonoBehaviour
+
+        private void Start()
+        {
+            myHUDController = FindObjectOfType<HUDController>();
+        }
+
+        public void DespawnTower()
+        {
+            Destroy(gameObject);
+            towerPlaceController.DespawnTowerResponse();
+            myHUDController.ToggleTowerMenu(false);
+        }
 
         public void ToBeingPointedMode()
         {
@@ -33,7 +57,9 @@ namespace __Game.Scripts.Towers
 
         public void Interact(Vector3? atPosition)
         {
-            Debug.Log("interact with tower");
+            myHUDController.ToggleTowerMenu(true);
+            myTowerMenuController = FindObjectOfType<TowerMenuController>();
+            myTowerMenuController.currentTowerController = this;
         }
 
         #endregion

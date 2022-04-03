@@ -11,11 +11,11 @@ namespace __Game.Scripts.Towers
 
         [SerializeField] private Transform spawnTowerTransform;
         [SerializeField] private MeshRenderer meshRenderer;
-        
+
         #endregion
-        
+
         #region Fields
-        
+
         public InteractableType InteractableType { get; set; } = InteractableType.TowerPlace;
         private HUDController myHUDController;
         private BuildMenuController myBuildMenuController;
@@ -41,6 +41,7 @@ namespace __Game.Scripts.Towers
             if (_towerSpawned) return;
             transform.localScale = Vector3.one;
         }
+
         public void Interact(Vector3? atPosition)
         {
             if (_towerSpawned) return;
@@ -48,20 +49,21 @@ namespace __Game.Scripts.Towers
             myBuildMenuController = FindObjectOfType<BuildMenuController>();
             myBuildMenuController.currentTowerPlaceController = this;
         }
-        
+
         public void SpawnTower(GameObject tower)
         {
-            Instantiate(tower, spawnTowerTransform.position, spawnTowerTransform.rotation, spawnTowerTransform);
+            var spawnedTower = Instantiate(tower, spawnTowerTransform.position, spawnTowerTransform.rotation,
+                spawnTowerTransform);
             meshRenderer.enabled = false;
             _towerSpawned = true;
-            
+
             myHUDController.ToggleBuildMenu(false);
+
+            spawnedTower.GetComponent<TowerController>().towerPlaceController = this;
         }
 
-        public void DespawnTower()
+        public void DespawnTowerResponse()
         {
-            var tower = spawnTowerTransform.GetChild(0)?.gameObject;
-            if (tower != null) Destroy(tower);
             meshRenderer.enabled = true;
             _towerSpawned = false;
         }

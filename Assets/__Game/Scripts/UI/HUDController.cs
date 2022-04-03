@@ -6,7 +6,9 @@ namespace __Game.Scripts.UI
     {
         #region Inspector
 
+        [SerializeField] private GameObject[] allMenus;
         [SerializeField] private GameObject buildMenu;
+        [SerializeField] private GameObject towerMenu;
 
         #endregion
 
@@ -15,7 +17,22 @@ namespace __Game.Scripts.UI
 
         public void ToggleBuildMenu(bool enable)
         {
+            if (enable) DisableAllMenus();
             buildMenu.SetActive(enable);
+        }
+
+        public void ToggleTowerMenu(bool enable)
+        {
+            if (enable) DisableAllMenus();
+            towerMenu.SetActive(enable);
+        }
+
+        private void DisableAllMenus()
+        {
+            foreach (var menu in allMenus)
+            {
+                menu.SetActive(false);
+            }
         }
 
         #endregion
