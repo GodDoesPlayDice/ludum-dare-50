@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Product
+  - Undefined
+  - Customer
   layers:
   - Default
   - TransparentFX

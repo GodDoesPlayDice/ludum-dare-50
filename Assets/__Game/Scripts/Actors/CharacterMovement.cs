@@ -12,7 +12,7 @@ namespace __Game.Scripts.Actors
         [Space] [Header("References to other objects and components")] [Space] 
         [SerializeField] private Animator animator;
         [SerializeField] private NavMeshAgent navMeshAgent;
-        // public Transform target;
+        public Vector3 target;
 
         [Space] [Header("Settings")] [Space] [SerializeField]
         private bool followTarget = true;
@@ -38,20 +38,21 @@ namespace __Game.Scripts.Actors
 
         private void FixedUpdate()
         {
-            Transform target = waypointMovementController.GetCurrentWaypoint().transform;
+            //Transform target = waypointMovementController.GetCurrentWaypoint().transform;
 
             var distToTarget = Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
-                new Vector2(target.position.x, target.position.z));
-            if (followTarget && distToTarget > 0.1f)
+                new Vector2(target.x, target.z));
+            if (followTarget && distToTarget > 0.5f)
             {
                 if (!navMeshAgent.enabled) navMeshAgent.enabled = true;
                 animator.SetBool(Walking, true);
-                navMeshAgent.destination = target.position;
+                navMeshAgent.destination = target;
             }
             else
             {
                 animator.SetBool(Walking, false);
                 navMeshAgent.enabled = false;
+                Destroy(gameObject);
             }
         }
 
