@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1282990714927540973}
   - component: {fileID: 665228522348852582}
   - component: {fileID: 1581911806}
+  - component: {fileID: 2617878577143447704}
   m_Layer: 0
   m_Name: CharacterTemplate
   m_TagString: Untagged
@@ -102,9 +103,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5209977179503219259}
   navMeshAgent: {fileID: 665228522348852582}
-  target: {fileID: 0}
   followTarget: 1
   navMeshSpeed: 3
+--- !u!114 &2617878577143447704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4892025576295093198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 456dab96b86eaf841b22964ef173ffb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToPass: 0.5
+  waypoint: {fileID: 0}
 --- !u!1001 &4712571729372187353
 PrefabInstance:
   m_ObjectHideFlags: 0

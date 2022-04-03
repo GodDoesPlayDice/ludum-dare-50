@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace __Game.Scripts.Actors
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerCharacterMovement : MonoBehaviour
     {
         #region Inspector
 
