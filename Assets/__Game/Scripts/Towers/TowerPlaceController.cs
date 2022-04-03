@@ -6,12 +6,12 @@ namespace __Game.Scripts.Towers
     public class TowerPlaceController : MonoBehaviour, IInteractable
     {
         public InteractableType InteractableType { get; set; } = InteractableType.TowerPlace;
-
-        public void OnPointerEnter()
+        public bool IsBeingPointed { get; set; } = false;
+        public void ToBeingPointedMode()
         {
         }
 
-        public void OnPointerExit()
+        public void ToNotBeingPointedMode()
         {
             
         }

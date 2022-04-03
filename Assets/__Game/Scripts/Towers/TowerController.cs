@@ -8,6 +8,7 @@ namespace __Game.Scripts.Towers
         #region Inspector
 
         public InteractableType InteractableType { get; set; } = InteractableType.Tower;
+        public bool IsBeingPointed { get; set; } = false;
         [SerializeField] private GameObject projectile;
 
         [Header("Combat settings")] [SerializeField]
@@ -19,14 +20,14 @@ namespace __Game.Scripts.Towers
 
         #region MonoBehaviour
 
-        public void OnPointerEnter()
+        public void ToBeingPointedMode()
         {
-            Debug.Log("pointer enter");
+            transform.localScale = Vector3.one * 2; 
         }
 
-        public void OnPointerExit()
+        public void ToNotBeingPointedMode()
         {
-            Debug.Log("pointer exit");
+            transform.localScale = Vector3.one; 
         }
 
         public void Interact(Vector3? atPosition)

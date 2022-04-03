@@ -15,14 +15,15 @@ namespace __Game.Scripts.Interfaces
         {
         }
 
-        public void OnPointerEnter()
+        public void ToBeingPointedMode()
         {
         }
 
-        public void OnPointerExit()
+        public void ToNotBeingPointedMode()
         {
         }
 
         public InteractableType InteractableType { get; set; }
+        public bool IsBeingPointed { get; set; }
     }
 }
