@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 namespace __Game.Scripts.Actors
 {
+    [RequireComponent(typeof(WaypointMovementController))]
     public class CharacterMovement : MonoBehaviour
     {
         #region Inspector
@@ -11,7 +12,7 @@ namespace __Game.Scripts.Actors
         [Space] [Header("References to other objects and components")] [Space] 
         [SerializeField] private Animator animator;
         [SerializeField] private NavMeshAgent navMeshAgent;
-        public Transform target;
+        // public Transform target;
 
         [Space] [Header("Settings")] [Space] [SerializeField]
         private bool followTarget = true;
@@ -23,6 +24,7 @@ namespace __Game.Scripts.Actors
         #region Fields
 
         private static readonly int Walking = Animator.StringToHash("walking");
+        private WaypointMovementController waypointMovementController;
 
         #endregion
 
@@ -31,10 +33,13 @@ namespace __Game.Scripts.Actors
         private void Start()
         {
             navMeshAgent.speed = navMeshSpeed;
+            waypointMovementController = GetComponent<WaypointMovementController>();
         }
 
         private void FixedUpdate()
         {
+            Transform target = waypointMovementController.GetCurrentWaypoint().transform;
+
             var distToTarget = Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
                 new Vector2(target.position.x, target.position.z));
             if (followTarget && distToTarget > 0.1f)

@@ -5,6 +5,12 @@
     "AssetGUID": "8ed0e82fff52d094e879441569ce1751",
     "UniqueItemID": "GlobalObjectId_V1-2-8ed0e82fff52d094e879441569ce1751-1208104374-0"
   },
+  "GlobalObjectId_V1-2-8ed0e82fff52d094e879441569ce1751-1164178839-0": {
+    "GameObjectId": "GlobalObjectId_V1-2-8ed0e82fff52d094e879441569ce1751-1164178839-0",
+    "CommentText": "Destinations for bots",
+    "AssetGUID": "8ed0e82fff52d094e879441569ce1751",
+    "UniqueItemID": "GlobalObjectId_V1-2-8ed0e82fff52d094e879441569ce1751-1164178839-0"
+  },
   "GlobalObjectId_V1-2-8ed0e82fff52d094e879441569ce1751-1740120775-0": {
     "GameObjectId": "GlobalObjectId_V1-2-8ed0e82fff52d094e879441569ce1751-1740120775-0",
     "CommentText": "ГШ",
