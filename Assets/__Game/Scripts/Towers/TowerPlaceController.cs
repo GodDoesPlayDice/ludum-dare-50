@@ -23,12 +23,7 @@ namespace __Game.Scripts.Towers
 
         #endregion
 
-        #region MonoBehaviour
-
-        private void Start()
-        {
-            myHUDController = FindObjectOfType<HUDController>();
-        }
+        #region IInteractable
 
         public void ToBeingPointedMode()
         {
@@ -48,6 +43,15 @@ namespace __Game.Scripts.Towers
             myHUDController.ToggleBuildMenu(true);
             myBuildMenuController = FindObjectOfType<BuildMenuController>();
             myBuildMenuController.currentTowerPlaceController = this;
+        }
+
+        #endregion
+
+        #region MonoBehaviour
+
+        private void Start()
+        {
+            myHUDController = FindObjectOfType<HUDController>();
         }
 
         public void SpawnTower(GameObject tower)
