@@ -9,11 +9,12 @@ namespace __Game.Scripts.Towers
         public bool IsBeingPointed { get; set; } = false;
         public void ToBeingPointedMode()
         {
+            transform.localScale = new Vector3(1, 2f, 1);
         }
 
         public void ToNotBeingPointedMode()
         {
-            
+            transform.localScale = Vector3.one;
         }
         public void Interact(Vector3? atPosition)
         {

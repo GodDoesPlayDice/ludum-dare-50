@@ -15,6 +15,7 @@ namespace __Game.Scripts
         #region Fields
 
         private GameObject lastPointedInteractable;
+
         private Vector3 mousePosition;
         private Vector3 clickPosInWorld;
         private GameObject clickedObject;
@@ -52,13 +53,14 @@ namespace __Game.Scripts
 
         private void PointingOnInteractableLogic(GameObject obj)
         {
+            if (obj == null) return;
             if (obj != lastPointedInteractable && lastPointedInteractable != null)
             {
                 lastPointedInteractable.GetComponent<IInteractable>().ToNotBeingPointedMode();
                 lastPointedInteractable = null;
             }
-            
-            var interactableController = obj.GetComponent<IInteractable>();
+
+            obj.TryGetComponent<IInteractable>(out var interactableController);
             if (interactableController != null)
             {
                 interactableController.ToBeingPointedMode();
