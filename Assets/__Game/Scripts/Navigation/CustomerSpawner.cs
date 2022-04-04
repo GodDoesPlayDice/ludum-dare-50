@@ -120,7 +120,7 @@ public class CustomerSpawner : MonoBehaviour
         cache.Release(customer);
         if (customer.GetComponent<MobController>().productsRequire.Count == 0)
         {
-            moneyController.AddMoney(moneyForCustomer + (int) Mathf.Floor(moneyForCustomer * currentCost * 0.2f));
+            moneyController.AddMoney(moneyForCustomer + (int) Mathf.Floor(moneyForCustomer * currentCost * 0.3f));
         }
         else
         {

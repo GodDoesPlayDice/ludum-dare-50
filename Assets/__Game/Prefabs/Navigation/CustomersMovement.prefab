@@ -117,9 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a29737e29ce0842bb01416e69bce49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costDelta: 0.0005
+  costDelta: 0.0004
   minSpawnTime: 4
   maxSpawnTime: 5
+  moneyForCustomer: 150
   endCollider: {fileID: 6952826828627878845}
   customersPrefabs:
   - customerPrefab: {fileID: 7532624471098528958, guid: ec7f92b2e62da48d29e7754bd1cbcd83,
