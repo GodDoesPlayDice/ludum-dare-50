@@ -9,14 +9,16 @@ namespace __Game.Scripts.Actors
     {
         #region Inspector
 
-        [Space] [Header("References to other objects and components")] [Space] 
-        [SerializeField] private Animator animator;
+        [Space] [Header("References to other objects and components")] [Space] [SerializeField]
+        private Animator animator;
+
         [SerializeField] private NavMeshAgent navMeshAgent;
         public Vector3 target;
 
         [Space] [Header("Settings")] [Space] [SerializeField]
         private bool followTarget = true;
 
+        [Tooltip("Also affects animation")]
         [SerializeField] private float navMeshSpeed = 3f;
 
         #endregion
@@ -25,6 +27,7 @@ namespace __Game.Scripts.Actors
 
         private static readonly int Walking = Animator.StringToHash("walking");
         private WaypointMovementController waypointMovementController;
+        private static readonly int WalkSpeedAnim = Animator.StringToHash("walk speed");
 
         #endregion
 
@@ -34,6 +37,7 @@ namespace __Game.Scripts.Actors
         {
             navMeshAgent.speed = navMeshSpeed;
             waypointMovementController = GetComponent<WaypointMovementController>();
+            animator.SetFloat(WalkSpeedAnim, navMeshSpeed);
         }
 
         private void FixedUpdate()

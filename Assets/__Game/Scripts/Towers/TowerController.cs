@@ -145,7 +145,7 @@ namespace __Game.Scripts.Towers
 
         private void Shoot(Vector3 target)
         {
-            target.y = 1.5f;
+            target.y = 1f;
             currentShootDir = (target - shootPoint.transform.position).normalized;
             animator.SetTrigger(ShootAnimation);
         }
