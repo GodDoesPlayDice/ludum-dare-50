@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a29737e29ce0842bb01416e69bce49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costDelta: 0.0006
+  costDelta: 0.0005
   minSpawnTime: 4
   maxSpawnTime: 5
   endCollider: {fileID: 6952826828627878845}

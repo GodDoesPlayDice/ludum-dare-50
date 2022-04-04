@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using __Game.Scripts;
 using __Game.Scripts.Actors;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -37,6 +38,9 @@ public class CustomerSpawner : MonoBehaviour
     private float difficultyMultiplier = 1f;
     private CustomerCache cache;
 
+    private PlayerMoney moneyController;
+    private GameManager gameManager;
+
     #endregion
 
 
@@ -51,6 +55,9 @@ public class CustomerSpawner : MonoBehaviour
         spawnerCollider = GetComponent<BoxCollider>();
         spawnerBounds = spawnerCollider.bounds;
         nextSpawnTime = Time.time;
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        moneyController = GameObject.Find("PlayerMoney").GetComponent<PlayerMoney>();
     }
 
     // Update is called once per frame
@@ -92,7 +99,7 @@ public class CustomerSpawner : MonoBehaviour
         var bounds = endCollider.bounds;
         movement.target = new Vector3(Random.Range(bounds.min.x, bounds.max.x), 0f,
             Random.Range(bounds.min.z, bounds.max.z));
-        movement.onReachDest = () => cache.Release(customer);
+        movement.onReachDest = () => CustomerReachDestination(customer);
         movement.navMeshSpeed += (currentCost * 0.8f);
 
         var controller = customer.GetComponent<MobController>();
@@ -105,5 +112,18 @@ public class CustomerSpawner : MonoBehaviour
         var type = allGoodsTypes[Random.Range(0, allGoodsTypes.Length)];
         result[type] = 3 + (int) Mathf.Floor(currentCost);
         return result;
+    }
+
+    private void CustomerReachDestination(GameObject customer)
+    {
+        cache.Release(customer);
+        if (customer.GetComponent<MobController>().productsRequire.Count == 0)
+        {
+            moneyController.AddMoney(100);
+        }
+        else
+        {
+            gameManager.LoseGame();
+        }
     }
 }
