@@ -6,6 +6,7 @@ using __Game.Scripts.Interfaces;
 using __Game.Scripts.UI;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.UIElements;
 
 namespace __Game.Scripts.Towers
 {
@@ -13,6 +14,10 @@ namespace __Game.Scripts.Towers
     {
         #region Inspector
 
+
+        [SerializeField] private GoodType goodsSO;
+
+        [SerializeField] private SpriteRenderer goodsSprite;
         [SerializeField] private Animator animator;
         [SerializeField] private MeshRenderer attackRadiusMeshRenderer;
 
@@ -23,7 +28,7 @@ namespace __Game.Scripts.Towers
 
         [SerializeField] private Transform aimingObjectTransform;
 
-        public GameObject projectile;
+        public GameObject projectile { get; private set; }
 
         public float projectileSpeed;
 
@@ -89,6 +94,9 @@ namespace __Game.Scripts.Towers
             currentAttackRadius = baseAttackRadius;
             StartCoroutine(ShootingCoroutine());
             animator.SetTrigger(Spawn);
+
+            goodsSprite.sprite = goodsSO.icon;
+            projectile = goodsSO.prefabWithModel;
         }
 
         private void FixedUpdate()

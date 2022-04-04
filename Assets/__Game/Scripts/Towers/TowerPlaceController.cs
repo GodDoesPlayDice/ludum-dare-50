@@ -72,6 +72,16 @@ namespace __Game.Scripts.Towers
             _towerSpawned = false;
         }
 
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            var pos = transform.position;
+            
+            Gizmos.DrawLine(new Vector3(pos.x, 0.2f, pos.z), transform.position + transform.forward * 2f);
+        }
+#endif
+
         #endregion
     }
 }
