@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using __Game.Scripts.Actors;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(BoxCollider), typeof(CustomerCache))]
 public class CustomerSpawner : MonoBehaviour
 {
     [Serializable]
@@ -34,6 +35,7 @@ public class CustomerSpawner : MonoBehaviour
     private float currentCost;
     private float nextSpawnTime;
     private float difficultyMultiplier = 1f;
+    private CustomerCache cache;
 
     #endregion
 
@@ -42,7 +44,9 @@ public class CustomerSpawner : MonoBehaviour
     void Start()
     {
         allGoodsTypes = Resources.LoadAll<GoodType>("");
-        Debug.Log("SIZE: " + allGoodsTypes.Length);
+        cache = GetComponent<CustomerCache>();
+        cache.Initialize(customersPrefabs.Select(holder => holder.customerPrefab).ToArray());
+        Debug.Log("Products count: " + allGoodsTypes.Length);
         currentCost = startCost;
         spawnerCollider = GetComponent<BoxCollider>();
         spawnerBounds = spawnerCollider.bounds;
@@ -67,7 +71,9 @@ public class CustomerSpawner : MonoBehaviour
     private GameObject SpawnCustomer()
     {
         //var customerCost = Random.Range(0f, currentCost);
-        var customer = Instantiate(customersPrefabs[0].customerPrefab, CalcCustomerPosition(), Quaternion.identity);
+        // var customer = Instantiate(customersPrefabs[0].customerPrefab, CalcCustomerPosition(), Quaternion.identity);
+        var prefabHolder = customersPrefabs[Random.Range(0, customersPrefabs.Length - 1)];
+        var customer = cache.Get(prefabHolder.customerPrefab, CalcCustomerPosition(), Quaternion.identity);
         PrepareCustomer(customer);
         return customer;
     }
@@ -85,6 +91,7 @@ public class CustomerSpawner : MonoBehaviour
         var bounds = endCollider.bounds;
         movement.target = new Vector3(Random.Range(bounds.min.x, bounds.max.x), 0f,
             Random.Range(bounds.min.z, bounds.max.z));
+        movement.onReachDest = () => cache.Release(customer);
 
         var controller = customer.GetComponent<MobController>();
         controller.SetDemands(CalcProducts());
