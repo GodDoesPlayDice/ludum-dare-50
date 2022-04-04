@@ -6,8 +6,7 @@ public enum SceneEnum
 {
 
     CONTROLLER = 0,
-    SHARED_DATA = 1,
-    MUSIC = 2,
-    TITLE = 3,
+    TITLE = 1,
+    GAME = 2,
     NULL = 9999
 }

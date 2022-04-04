@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -377,7 +377,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &134622060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,7 +1119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 557.74854}
   m_SizeDelta: {x: 600, y: 1500}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &450050938
@@ -2368,13 +2368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14acd19f9f624bf380b2cfce959493b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allScreens:
-  - {fileID: 836111341}
-  - {fileID: 2078578701}
-  - {fileID: 1432810671}
   mainScreen: {fileID: 836111341}
   howToPlayScreen: {fileID: 2078578701}
   creditsScreen: {fileID: 1432810671}
+  loadSceneEvent: {fileID: 11400000, guid: 374c666e88658a64eb05b90ef6fa51be, type: 2}
 --- !u!1 &1266531722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,7 +2475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1277675947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2492,7 +2489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadables: []
-  sceneIndex: 3
+  sceneIndex: 1
   loadProgressSceneEvent: {fileID: 11400000, guid: 674e89ee87dbbe34fb8cf32edb48ebed,
     type: 2}
 --- !u!4 &1277675948
@@ -3004,7 +3001,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 90, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1458376179
 MonoBehaviour:
   m_ObjectHideFlags: 0

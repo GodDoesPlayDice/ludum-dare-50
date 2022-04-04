@@ -8,7 +8,7 @@ namespace __Game.Scripts.UI
         public GameObject howToPlayScreen;
         public GameObject creditsScreen;
 
-        
+        public LoadSceneEvent loadSceneEvent;
 
         public void OnCreditsScreenButtonPressed()
         {
@@ -26,7 +26,8 @@ namespace __Game.Scripts.UI
 
         public void OnPlayNewGameButtonPressed()
         {
-            
+            var ep = new LoadSceneEP(SceneEnum.GAME, SceneEnum.TITLE, active: true);
+            loadSceneEvent.Raise(ep);
         }
 
         public void OnBackButtonPressed()
