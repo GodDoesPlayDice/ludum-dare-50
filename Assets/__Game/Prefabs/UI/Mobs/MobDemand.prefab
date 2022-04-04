@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 4299937369146162286}
   - component: {fileID: 542162395725740493}
   - component: {fileID: 7789173137008772107}
+  - component: {fileID: 6631981947534681136}
   m_Layer: 0
   m_Name: MobDemand
   m_TagString: Untagged
@@ -282,6 +283,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &6631981947534681136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010026302838050676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecdd467e0d268a34ea7cda590e7e885e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2777360833189329448}
+  textField: {fileID: 1381913430176372893}
 --- !u!1 &4437966407570111842
 GameObject:
   m_ObjectHideFlags: 0
