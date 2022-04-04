@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace __Game.Scripts.UI
@@ -52,7 +53,7 @@ namespace __Game.Scripts.UI
                     {
                         it.SetProduct(type, count);
                     }
-                    else
+                    else if (!it.IsDestroyed()) 
                     {
                         it.gameObject.SetActive(false);
                     }

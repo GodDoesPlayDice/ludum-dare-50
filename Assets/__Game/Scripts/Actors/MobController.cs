@@ -8,6 +8,12 @@ namespace __Game.Scripts.Actors
     [RequireComponent(typeof(MobUIController))]
     public class MobController : MonoBehaviour
     {
+        #region Inspector
+
+        public string identifier;
+
+        #endregion
+        
         #region Fields
 
         public Dictionary<GoodType, int> productsRequire { get; private set; }
@@ -40,7 +46,7 @@ namespace __Game.Scripts.Actors
                 {
                     productsRequire.Remove(type);
                 }
-                uiController.ChangeSingleDemand(type, count);
+                uiController.ChangeSingleDemand(type, requireLeft);
                 return true;
             }
 

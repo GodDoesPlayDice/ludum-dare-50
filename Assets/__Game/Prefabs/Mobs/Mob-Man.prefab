@@ -64,10 +64,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 600
+  m_AngularSpeed: 800
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -106,7 +106,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 7687327345269428666}
   target: {x: 0, y: 0, z: 0}
   followTarget: 1
-  navMeshSpeed: 0.7
+  navMeshSpeed: 2.5
 --- !u!54 &7854826024915764536
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdaf1787e5b4d1281306892c60e21f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identifier: Man
 --- !u!114 &-7735728222304639709
 MonoBehaviour:
   m_ObjectHideFlags: 0

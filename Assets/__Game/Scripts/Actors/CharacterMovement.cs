@@ -29,6 +29,8 @@ namespace __Game.Scripts.Actors
         private WaypointMovementController waypointMovementController;
         private static readonly int WalkSpeedAnim = Animator.StringToHash("walk speed");
 
+        public Action onReachDest;
+
         #endregion
 
         #region MonoBehaviour
@@ -40,13 +42,18 @@ namespace __Game.Scripts.Actors
             animator.SetFloat(WalkSpeedAnim, navMeshSpeed);
         }
 
+        private void OnEnable()
+        {
+            animator.SetFloat(WalkSpeedAnim, navMeshSpeed);
+        }
+
         private void FixedUpdate()
         {
             //Transform target = waypointMovementController.GetCurrentWaypoint().transform;
 
             var distToTarget = Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
                 new Vector2(target.x, target.z));
-            if (followTarget && distToTarget > 0.5f)
+            if (distToTarget > 1f)
             {
                 if (!navMeshAgent.enabled) navMeshAgent.enabled = true;
                 animator.SetBool(Walking, true);
@@ -56,7 +63,8 @@ namespace __Game.Scripts.Actors
             {
                 animator.SetBool(Walking, false);
                 navMeshAgent.enabled = false;
-                Destroy(gameObject);
+                // Destroy(gameObject);
+                onReachDest();
             }
         }
 
