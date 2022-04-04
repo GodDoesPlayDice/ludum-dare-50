@@ -19,7 +19,7 @@ namespace __Game.Scripts.Actors
         private bool followTarget = true;
 
         [Tooltip("Also affects animation")]
-        [SerializeField] private float navMeshSpeed = 3f;
+        [SerializeField] public float navMeshSpeed = 3f;
 
         #endregion
 

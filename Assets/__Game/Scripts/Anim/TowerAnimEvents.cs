@@ -9,7 +9,7 @@ namespace __Game.Scripts.Anim
 
         public void ShootEvent()
         {
-            var spawned = Instantiate(towerController.projectile, towerController.shootPoint);
+            var spawned = Instantiate(towerController.projectile, towerController.shootPoint.position, Quaternion.identity);
             spawned.GetComponent<Rigidbody>().velocity = towerController.currentShootDir * towerController.projectileSpeed;
         }
 

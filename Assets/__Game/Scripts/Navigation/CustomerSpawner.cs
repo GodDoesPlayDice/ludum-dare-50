@@ -18,8 +18,8 @@ public class CustomerSpawner : MonoBehaviour
 
     #region Inspector
 
-    [SerializeField] private float startCost = 1f;
-    [SerializeField] private float costDelta = 0.01f;
+    //[SerializeField] private float startCost = 1f;
+    [SerializeField] private float costDelta = 0.001f;
     [SerializeField] private float minSpawnTime = 0.5f;
     [SerializeField] private float maxSpawnTime = 1f;
     [SerializeField] private BoxCollider endCollider;
@@ -47,7 +47,7 @@ public class CustomerSpawner : MonoBehaviour
         cache = GetComponent<CustomerCache>();
         cache.Initialize(customersPrefabs.Select(holder => holder.customerPrefab).ToArray());
         Debug.Log("Products count: " + allGoodsTypes.Length);
-        currentCost = startCost;
+        // currentCost = startCost;
         spawnerCollider = GetComponent<BoxCollider>();
         spawnerBounds = spawnerCollider.bounds;
         nextSpawnTime = Time.time;
@@ -58,7 +58,8 @@ public class CustomerSpawner : MonoBehaviour
     {
         if (nextSpawnTime <= Time.time)
         {
-            nextSpawnTime = Time.time + Random.Range(minSpawnTime, maxSpawnTime);
+            var difficultyDelta = Mathf.Max(currentCost * 0.8f, 1f);
+            nextSpawnTime = Time.time + Random.Range(minSpawnTime - difficultyDelta, maxSpawnTime - difficultyDelta);
             SpawnCustomer();
         }
     }
@@ -92,6 +93,7 @@ public class CustomerSpawner : MonoBehaviour
         movement.target = new Vector3(Random.Range(bounds.min.x, bounds.max.x), 0f,
             Random.Range(bounds.min.z, bounds.max.z));
         movement.onReachDest = () => cache.Release(customer);
+        movement.navMeshSpeed += (currentCost * 0.8f);
 
         var controller = customer.GetComponent<MobController>();
         controller.SetDemands(CalcProducts());
@@ -101,7 +103,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         var result = new Dictionary<GoodType, int>();
         var type = allGoodsTypes[Random.Range(0, allGoodsTypes.Length)];
-        result[type] = 5;
+        result[type] = 3 + (int) Mathf.Floor(currentCost);
         return result;
     }
 }
