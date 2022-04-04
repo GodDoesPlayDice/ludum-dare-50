@@ -72,7 +72,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         //var customerCost = Random.Range(0f, currentCost);
         // var customer = Instantiate(customersPrefabs[0].customerPrefab, CalcCustomerPosition(), Quaternion.identity);
-        var prefabHolder = customersPrefabs[Random.Range(0, customersPrefabs.Length - 1)];
+        var prefabHolder = customersPrefabs[Random.Range(0, customersPrefabs.Length)];
         var customer = cache.Get(prefabHolder.customerPrefab, CalcCustomerPosition(), Quaternion.identity);
         PrepareCustomer(customer);
         return customer;
@@ -100,7 +100,7 @@ public class CustomerSpawner : MonoBehaviour
     private Dictionary<GoodType, int> CalcProducts()
     {
         var result = new Dictionary<GoodType, int>();
-        var type = allGoodsTypes[Random.Range(0, allGoodsTypes.Length - 1)];
+        var type = allGoodsTypes[Random.Range(0, allGoodsTypes.Length)];
         result[type] = 5;
         return result;
     }

@@ -19,7 +19,7 @@ public class WaypointMovementController : MonoBehaviour
         {
             if (waypoint.nextWaypoints.Length > 0)
             {
-                waypoint = waypoint.nextWaypoints[Random.Range(0, waypoint.nextWaypoints.Length - 1)];
+                waypoint = waypoint.nextWaypoints[Random.Range(0, waypoint.nextWaypoints.Length)];
             }
         }
 
