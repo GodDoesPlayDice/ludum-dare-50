@@ -21,8 +21,7 @@ namespace __Game.Scripts.Towers
         [SerializeField] private Animator animator;
         [SerializeField] private MeshRenderer attackRadiusMeshRenderer;
 
-        [Space] [Header("Combat settings")] [Space] [SerializeField]
-        private float baseAttackRadius = 3;
+        [Space] [Header("Combat settings")] [Space]
 
         public Transform shootPoint;
 
@@ -134,12 +133,24 @@ namespace __Game.Scripts.Towers
         public void UpgradeTower()
         {
             currentLevel++;
+            
+            // radius
             var arrackRadius = attackRadiusMeshRenderer.gameObject;
             var attackRadiusScale = arrackRadius.transform.localScale;
             var newScaleVal = attackRadiusScale.x += attackRadiusScale.x * goodsSO.pricesPercentChangeThroughUpgrade / 100;
+            newScaleVal = Mathf.Clamp(newScaleVal, newScaleVal, 30f);
             arrackRadius.transform.localScale = new Vector3(newScaleVal, 0.2f, newScaleVal);
-            projectileSpeed += projectileSpeed * goodsSO.pricesPercentChangeThroughUpgrade / 100;
-            currentAttackRate -= currentAttackRate * goodsSO.pricesPercentChangeThroughUpgrade / 100;
+            
+            // proj speed
+            var newProjectileSpeed = projectileSpeed * goodsSO.pricesPercentChangeThroughUpgrade / 100;
+            newProjectileSpeed = Mathf.Clamp(newProjectileSpeed, newProjectileSpeed, 50);
+            projectileSpeed += newProjectileSpeed;
+            
+            // attack rate
+            var newAttackRate = currentAttackRate * goodsSO.pricesPercentChangeThroughUpgrade / 100;
+            currentAttackRate -= Mathf.Clamp(newAttackRate, 0.1f, newAttackRate);
+            
+            // prices
             currentSellPrice += currentSellPrice * goodsSO.pricesPercentChangeThroughUpgrade / 100;
             currentUpgradePrice += currentUpgradePrice * goodsSO.pricesPercentChangeThroughUpgrade / 100;
         }
