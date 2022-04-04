@@ -106,7 +106,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 7687327345269428666}
   target: {x: 0, y: 0, z: 0}
   followTarget: 1
-  navMeshSpeed: 0.5
+  navMeshSpeed: 0.7
 --- !u!54 &7854826024915764536
 Rigidbody:
   m_ObjectHideFlags: 0
