@@ -23,6 +23,7 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField] private float costDelta = 0.001f;
     [SerializeField] private float minSpawnTime = 0.5f;
     [SerializeField] private float maxSpawnTime = 1f;
+    [SerializeField] private int moneyForCustomer = 150;
     [SerializeField] private BoxCollider endCollider;
     [SerializeField] private CustomerCostHolder[] customersPrefabs;
 
@@ -119,7 +120,7 @@ public class CustomerSpawner : MonoBehaviour
         cache.Release(customer);
         if (customer.GetComponent<MobController>().productsRequire.Count == 0)
         {
-            moneyController.AddMoney(100);
+            moneyController.AddMoney(moneyForCustomer);
         }
         else
         {
