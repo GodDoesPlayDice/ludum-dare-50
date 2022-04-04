@@ -1,15 +1,31 @@
+using System;
 using System.Collections.Generic;
+using __Game.Scripts.UI;
 using UnityEngine;
 
 namespace __Game.Scripts.Actors
 {
+    [RequireComponent(typeof(MobUIController))]
     public class MobController : MonoBehaviour
     {
         #region Fields
 
-        public Dictionary<GoodType, int> productsRequire;
+        public Dictionary<GoodType, int> productsRequire { get; private set; }
+
+        private MobUIController uiController;
 
         #endregion
+
+        
+        private void Start()
+        {
+            Init();
+        }
+
+        private void Init()
+        {
+            uiController = GetComponent<MobUIController>();
+        }
 
         public bool GiveProduct(GoodType type, int count)
         {
@@ -24,10 +40,21 @@ namespace __Game.Scripts.Actors
                 {
                     productsRequire.Remove(type);
                 }
+                uiController.ChangeSingleDemand(type, count);
                 return true;
             }
 
             return false;
+        }
+
+        public void SetDemands(Dictionary<GoodType, int> demands)
+        {
+            if (uiController == null)
+            {
+                Init();
+            }
+            productsRequire = demands;
+            uiController.CreateDemands(demands);
         }
     }
 }

@@ -87,7 +87,7 @@ public class CustomerSpawner : MonoBehaviour
             Random.Range(bounds.min.z, bounds.max.z));
 
         var controller = customer.GetComponent<MobController>();
-        controller.productsRequire = CalcProducts();
+        controller.SetDemands(CalcProducts());
     }
 
     private Dictionary<GoodType, int> CalcProducts()

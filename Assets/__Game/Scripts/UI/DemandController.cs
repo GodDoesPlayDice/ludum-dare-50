@@ -13,8 +13,15 @@ public class DemandController : MonoBehaviour
 
     #endregion
 
+    #region Fields
+
+    public GoodType currentProduct { get; private set; }
+
+    #endregion
+
     public void SetProduct(GoodType type, int count)
     {
+        this.currentProduct = type;
         image.sprite = type.icon;
         textField.text = count.ToString();
     }
