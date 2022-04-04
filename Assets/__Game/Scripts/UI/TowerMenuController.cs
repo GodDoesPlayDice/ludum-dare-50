@@ -36,7 +36,6 @@ namespace __Game.Scripts.UI
         {
             if (PlayerMoney.Instance.CurrentMoney >= currentTowerController.currentUpgradePrice)
             {
-                Debug.Log("upgrade");
                 PlayerMoney.Instance.AddMoney(-currentTowerController.currentUpgradePrice);
                 currentTowerController.UpgradeTower();
             }

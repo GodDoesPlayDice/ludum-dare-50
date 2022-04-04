@@ -102,7 +102,7 @@ namespace __Game.Scripts.Towers
             currentUpgradePrice = goodsSO.baseTowerUpgradePrice;
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
             currentTargetMob = GetCurrentTargetMob();
             if (currentTargetMob != null)
@@ -161,9 +161,10 @@ namespace __Game.Scripts.Towers
             {
                 animator.SetFloat(ShootSpeedAnim, 1 / currentAttackRate);
 
-                if (GetCurrentTargetMob() != null)
+                var victim = GetCurrentTargetMob();
+                if (victim != null)
                 {
-                    Shoot(currentTargetMob.transform.position);
+                    Shoot(victim.transform.position);
                 }
 
                 yield return new WaitForSeconds(currentAttackRate);
