@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace __Game.Scripts.Anim
 {
-    public class TowerShootAnimEvent : MonoBehaviour
+    public class TowerAnimEvents : MonoBehaviour
     {
         [SerializeField] private TowerController towerController;
 
@@ -11,6 +11,11 @@ namespace __Game.Scripts.Anim
         {
             var spawned = Instantiate(towerController.projectile, towerController.shootPoint);
             spawned.GetComponent<Rigidbody>().velocity = towerController.currentShootDir * towerController.projectileSpeed;
+        }
+
+        public void DespawnEvent()
+        {
+            towerController.DespawnTower();
         }
     }
 }

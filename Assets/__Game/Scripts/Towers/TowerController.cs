@@ -48,6 +48,8 @@ namespace __Game.Scripts.Towers
         private float currentAttackRadius;
         private static readonly int ShootAnimation = Animator.StringToHash("shoot");
         private static readonly int ShootSpeedAnim = Animator.StringToHash("shoot speed");
+        private static readonly int Spawn = Animator.StringToHash("spawn");
+        private static readonly int Despawn = Animator.StringToHash("despawn");
 
         #endregion
 
@@ -86,6 +88,7 @@ namespace __Game.Scripts.Towers
             currentAttackRate = baseAttackRate;
             currentAttackRadius = baseAttackRadius;
             StartCoroutine(ShootingCoroutine());
+            animator.SetTrigger(Spawn);
         }
 
         private void FixedUpdate()
@@ -103,11 +106,16 @@ namespace __Game.Scripts.Towers
             }
         }
 
+        public void OnDespawnTowerClicked()
+        {
+            animator.SetTrigger(Despawn);
+            myHUDController.ToggleTowerMenu(false);
+        }
+
         public void DespawnTower()
         {
             Destroy(gameObject);
             towerPlaceController.DespawnTowerResponse();
-            myHUDController.ToggleTowerMenu(false);
         }
 
         private IEnumerator ShootingCoroutine()

@@ -9,7 +9,7 @@ namespace __Game.Scripts.UI
 
         public void OnSellButtonPressed()
         {
-            currentTowerController.DespawnTower();
+            currentTowerController.OnDespawnTowerClicked();
         }
 
         public void OnUpgradeButtonPressed()
