@@ -7,7 +7,7 @@ namespace __Game.Scripts.UI
     public class GameplayUIController : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI moneyAmountTMP;
-        private void Awake()
+        private void Start()
         {
             PlayerMoney.Instance.OnCurrentMoneyChanged.AddListener(CurrentMoneyChanged);
         }

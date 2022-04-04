@@ -12,7 +12,7 @@ namespace __Game.Scripts.Environment
         private void OnTriggerEnter(Collider other)
         {
             other.gameObject.TryGetComponent<MobController>(out var mobController);
-            if (mobController != null)
+            if (mobController != null && mobController.productsRequire.ContainsKey(productSO))
             {
                 mobController.GiveProduct(productSO, 1);
                 Destroy(gameObject);
