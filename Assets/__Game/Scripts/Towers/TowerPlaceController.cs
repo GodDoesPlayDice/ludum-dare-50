@@ -29,14 +29,14 @@ namespace __Game.Scripts.Towers
         {
             if (_towerSpawned) return;
             transform.localScale = new Vector3(1, 3f, 1);
-            effectGameObject.SetActive(true);
+            // effectGameObject.SetActive(true);
         }
 
         public void ToNotBeingPointedMode()
         {
             if (_towerSpawned) return;
             transform.localScale = Vector3.one;
-            effectGameObject.SetActive(false);
+            // effectGameObject.SetActive(false);
         }
 
         public void Interact(Vector3? atPosition)

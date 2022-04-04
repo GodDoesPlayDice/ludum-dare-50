@@ -41,7 +41,7 @@ namespace __Game.Scripts.Towers
         public int currentLevel;
         public int currentSellPrice;
         public int currentUpgradePrice;
-        
+
         public InteractableType InteractableType { get; set; } = InteractableType.Tower;
         [HideInInspector] public TowerPlaceController towerPlaceController;
 
@@ -134,9 +134,14 @@ namespace __Game.Scripts.Towers
         public void UpgradeTower()
         {
             currentLevel++;
-            currentAttackRate -= currentAttackRate * goodsSO.pricesPercentChangeThroughUpgrade;
-            currentSellPrice += currentSellPrice * goodsSO.pricesPercentChangeThroughUpgrade;
-            currentUpgradePrice += currentUpgradePrice * goodsSO.pricesPercentChangeThroughUpgrade;
+            var arrackRadius = attackRadiusMeshRenderer.gameObject;
+            var attackRadiusScale = arrackRadius.transform.localScale;
+            var newScaleVal = attackRadiusScale.x += attackRadiusScale.x * goodsSO.pricesPercentChangeThroughUpgrade / 100;
+            arrackRadius.transform.localScale = new Vector3(newScaleVal, 0.2f, newScaleVal);
+            projectileSpeed += projectileSpeed * goodsSO.pricesPercentChangeThroughUpgrade / 100;
+            currentAttackRate -= currentAttackRate * goodsSO.pricesPercentChangeThroughUpgrade / 100;
+            currentSellPrice += currentSellPrice * goodsSO.pricesPercentChangeThroughUpgrade / 100;
+            currentUpgradePrice += currentUpgradePrice * goodsSO.pricesPercentChangeThroughUpgrade / 100;
         }
 
         private IEnumerator ShootingCoroutine()
@@ -178,12 +183,13 @@ namespace __Game.Scripts.Towers
                     if (hasDemand && isNearest) result = currentEntry;
                 }
             }
+
             return result;
         }
 
         private void Shoot(Vector3 target)
         {
-            target.y = 1f;
+            target.y = 1.5f;
             currentShootDir = (target - shootPoint.transform.position).normalized;
             animator.SetTrigger(ShootAnimation);
         }

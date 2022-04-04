@@ -22,7 +22,7 @@ namespace __Game.Scripts.UI
                 towerNameTMP.text = $"{currentTowerController.goodsSO.name} tower";
                 towerLvlTMP.text = $"{currentTowerController.currentLevel.ToString()} lvl";
                 sellPriceTMP.text = currentTowerController.currentSellPrice.ToString();
-                upgradePriceTMP.text = currentTowerController.currentSellPrice.ToString();
+                upgradePriceTMP.text = currentTowerController.currentUpgradePrice.ToString();
             }
         }
 
@@ -36,6 +36,7 @@ namespace __Game.Scripts.UI
         {
             if (PlayerMoney.Instance.CurrentMoney >= currentTowerController.currentUpgradePrice)
             {
+                Debug.Log("upgrade");
                 PlayerMoney.Instance.AddMoney(-currentTowerController.currentUpgradePrice);
                 currentTowerController.UpgradeTower();
             }
