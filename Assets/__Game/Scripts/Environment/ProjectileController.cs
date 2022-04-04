@@ -15,6 +15,7 @@ namespace __Game.Scripts.Environment
             if (mobController != null)
             {
                 mobController.GiveProduct(productSO, 1);
+                Destroy(gameObject);
             }
         }
         
