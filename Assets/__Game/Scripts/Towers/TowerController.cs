@@ -14,7 +14,6 @@ namespace __Game.Scripts.Towers
     {
         #region Inspector
 
-
         [SerializeField] private GoodType goodsSO;
 
         [SerializeField] private SpriteRenderer goodsSprite;
@@ -148,11 +147,14 @@ namespace __Game.Scripts.Towers
             {
                 var currentEnemy = enemies[i];
                 if (closestToExit == null) closestToExit = currentEnemy;
-                var currentDist = Vector3.Distance(currentEnemy.transform.position, exitTransform.position);
-                if (closestToExit != null &&
-                    currentDist < Vector3.Distance(closestToExit.transform.position, exitTransform.position))
+                if (currentEnemy != null)
                 {
-                    closestToExit = currentEnemy;
+                    var currentDist = Vector3.Distance(currentEnemy.transform.position, exitTransform.position);
+                    if (closestToExit != null &&
+                        currentDist < Vector3.Distance(closestToExit.transform.position, exitTransform.position))
+                    {
+                        closestToExit = currentEnemy;
+                    }
                 }
             }
 
