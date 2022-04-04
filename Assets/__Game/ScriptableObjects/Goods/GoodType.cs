@@ -10,4 +10,8 @@ public class GoodType : ScriptableObject
     public Sprite icon;
     public GameObject prefabWithModel;
     public GameObject towerPrefab;
+    public int baseTowerBuyPrice;
+    public int baseTowerSellPrice;
+    public int baseTowerUpgradePrice;
+    public int pricesPercentChangeThroughUpgrade;
 }

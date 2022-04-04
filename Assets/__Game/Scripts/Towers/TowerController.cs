@@ -15,7 +15,7 @@ namespace __Game.Scripts.Towers
     {
         #region Inspector
 
-        [SerializeField] private GoodType goodsSO;
+        public GoodType goodsSO;
 
         [SerializeField] private SpriteRenderer goodsSprite;
         [SerializeField] private Animator animator;
@@ -38,6 +38,10 @@ namespace __Game.Scripts.Towers
 
         #region Fields
 
+        public int currentLevel;
+        public int currentSellPrice;
+        public int currentUpgradePrice;
+        
         public InteractableType InteractableType { get; set; } = InteractableType.Tower;
         [HideInInspector] public TowerPlaceController towerPlaceController;
 
@@ -93,6 +97,10 @@ namespace __Game.Scripts.Towers
 
             goodsSprite.sprite = goodsSO.icon;
             projectile = goodsSO.prefabWithModel;
+
+            currentLevel = 1;
+            currentSellPrice = goodsSO.baseTowerSellPrice;
+            currentUpgradePrice = goodsSO.baseTowerUpgradePrice;
         }
 
         private void FixedUpdate()
@@ -121,6 +129,14 @@ namespace __Game.Scripts.Towers
         {
             Destroy(gameObject);
             towerPlaceController.DespawnTowerResponse();
+        }
+
+        public void UpgradeTower()
+        {
+            currentLevel++;
+            currentAttackRate -= currentAttackRate * goodsSO.pricesPercentChangeThroughUpgrade;
+            currentSellPrice += currentSellPrice * goodsSO.pricesPercentChangeThroughUpgrade;
+            currentUpgradePrice += currentUpgradePrice * goodsSO.pricesPercentChangeThroughUpgrade;
         }
 
         private IEnumerator ShootingCoroutine()

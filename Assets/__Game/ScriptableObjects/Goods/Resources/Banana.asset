@@ -18,3 +18,7 @@ MonoBehaviour:
     type: 3}
   towerPrefab: {fileID: 6173113617649185550, guid: 99a052645c96d40ff9175de0aedf3f8c,
     type: 3}
+  baseTowerBuyPrice: 500
+  baseTowerSellPrice: 300
+  baseTowerUpgradePrice: 700
+  pricesPercentChangeThroughUpgrade: 20

@@ -17,7 +17,11 @@ namespace __Game.Scripts.UI
 
         public void BuyTower()
         {
-            myBuildMenuController.OnTowerButtonPressed(goodsSO.towerPrefab);
+            if (PlayerMoney.Instance.CurrentMoney >= goodsSO.baseTowerBuyPrice)
+            {
+                PlayerMoney.Instance.AddMoney(-goodsSO.baseTowerBuyPrice);
+                myBuildMenuController.OnTowerButtonPressed(goodsSO.towerPrefab);
+            }
         }
     }
 }
