@@ -9,7 +9,8 @@ namespace __Game.Scripts.UI
         [SerializeField] private GameObject[] allMenus;
         [SerializeField] private GameObject buildMenu;
         [SerializeField] private GameObject towerMenu;
-
+        [SerializeField] private GameObject pauseMenu;
+        
         #endregion
 
 
@@ -25,6 +26,12 @@ namespace __Game.Scripts.UI
         {
             if (enable) DisableAllMenus();
             towerMenu.SetActive(enable);
+        }
+
+        public void TogglePauseMenu(bool enable)
+        {
+            if (enable) DisableAllMenus();
+            pauseMenu.SetActive(enable);
         }
 
         private void DisableAllMenus()
