@@ -3812,6 +3812,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerBuyButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2476375459664450935, guid: 11f3419576c964212867350ed9681cbc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2354649579655303008}
+    - target: {fileID: 2476375459664450935, guid: 11f3419576c964212867350ed9681cbc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyTower
+      objectReference: {fileID: 0}
     - target: {fileID: 5362317488440293477, guid: 11f3419576c964212867350ed9681cbc,
         type: 3}
       propertyPath: goodsSO
@@ -3931,3 +3941,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7694296649983178501}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2354649579655303008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5362317488440293477, guid: 11f3419576c964212867350ed9681cbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 7694296649983178501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79ea77faa904417869288e292d14ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
