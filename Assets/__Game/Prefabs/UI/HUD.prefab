@@ -2583,9 +2583,11 @@ MonoBehaviour:
   - {fileID: 1418769078586773552}
   - {fileID: 6122038827088742502}
   - {fileID: 8887821012490843695}
+  - {fileID: 1171662583849036713}
   buildMenu: {fileID: 1418769078586773552}
   towerMenu: {fileID: 6122038827088742502}
   pauseMenu: {fileID: 8887821012490843695}
+  deathMenu: {fileID: 1171662583849036713}
 --- !u!114 &5927442031351624688
 MonoBehaviour:
   m_ObjectHideFlags: 0

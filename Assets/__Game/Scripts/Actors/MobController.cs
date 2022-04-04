@@ -44,12 +44,12 @@ namespace __Game.Scripts.Actors
                 }
                 else
                 {
+                    
                     productsRequire.Remove(type);
                 }
                 uiController.ChangeSingleDemand(type, requireLeft);
                 return true;
             }
-
             return false;
         }
 

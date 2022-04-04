@@ -11,12 +11,22 @@ namespace __Game.Scripts
     }
     public class GameManager : MonoBehaviour
     {
+        public static GameManager Instance { get; private set; }
         public GameStates GameState { get; private set; }
 
         private HUDController hudController;
 
         private void Awake()
         {
+            if (Instance != null && Instance != this) 
+            { 
+                Destroy(this); 
+            } 
+            else 
+            { 
+                Instance = this; 
+            }
+            
             hudController = FindObjectOfType<HUDController>();
         }
 
@@ -26,6 +36,12 @@ namespace __Game.Scripts
         }
 
 
+        public void LoseGame()
+        {
+            Time.timeScale = 0f;
+            hudController.ToggleDeathMenu(true);
+        }
+        
         public void StartGameplay()
         {
             GameState = GameStates.Gameplay;
