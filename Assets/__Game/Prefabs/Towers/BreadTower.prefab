@@ -284,13 +284,13 @@ MonoBehaviour:
   goodsSprite: {fileID: 3745372722244503938}
   animator: {fileID: 782792522156703228}
   attackRadiusMeshRenderer: {fileID: 8345607406425339688}
-  baseAttackRadius: 3
+  baseAttackRadius: 7
   shootPoint: {fileID: 1826380901107609947}
   aimingObjectTransform: {fileID: 1244977163854451013}
   projectileSpeed: 25
   baseAttackRate: 1.5
   towerPlaceController: {fileID: 0}
-  enemies: []
+  enemiesInAttackRadius: []
   currentShootDir: {x: 0, y: 0, z: 0}
 --- !u!65 &5621123811237324313
 BoxCollider:

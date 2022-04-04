@@ -11,8 +11,8 @@ namespace __Game.Scripts.Towers
 
         [SerializeField] private Transform spawnTowerTransform;
         [SerializeField] private MeshRenderer meshRenderer;
-
-        #endregion
+        [SerializeField] private GameObject effectGameObject;
+            #endregion
 
         #region Fields
 
@@ -28,13 +28,15 @@ namespace __Game.Scripts.Towers
         public void ToBeingPointedMode()
         {
             if (_towerSpawned) return;
-            transform.localScale = new Vector3(1, 2f, 1);
+            transform.localScale = new Vector3(1, 3f, 1);
+            effectGameObject.SetActive(true);
         }
 
         public void ToNotBeingPointedMode()
         {
             if (_towerSpawned) return;
             transform.localScale = Vector3.one;
+            effectGameObject.SetActive(false);
         }
 
         public void Interact(Vector3? atPosition)

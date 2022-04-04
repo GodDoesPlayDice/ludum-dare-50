@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using __Game.Scripts.Actors;
 using __Game.Scripts.Interfaces;
 using __Game.Scripts.UI;
 using UnityEngine;
@@ -37,7 +38,6 @@ namespace __Game.Scripts.Towers
 
         #region Fields
 
-        private Transform exitTransform;
         public InteractableType InteractableType { get; set; } = InteractableType.Tower;
         [HideInInspector] public TowerPlaceController towerPlaceController;
 
@@ -45,11 +45,10 @@ namespace __Game.Scripts.Towers
         private TowerMenuController myTowerMenuController;
 
         // combat fields
-        public List<GameObject> enemies;
-        private GameObject closestToExitEnemy;
+        public List<GameObject> enemiesInAttackRadius;
+        private GameObject currentTargetMob;
         public Vector3 currentShootDir;
         private float currentAttackRate;
-        private float currentAttackRadius;
         private static readonly int ShootAnimation = Animator.StringToHash("shoot");
         private static readonly int ShootSpeedAnim = Animator.StringToHash("shoot speed");
         private static readonly int Spawn = Animator.StringToHash("spawn");
@@ -82,15 +81,13 @@ namespace __Game.Scripts.Towers
 
         private void Awake()
         {
-            exitTransform = GameObject.Find("ExitPos").transform;
             myHUDController = FindObjectOfType<HUDController>();
-            enemies = new List<GameObject>();
+            enemiesInAttackRadius = new List<GameObject>();
         }
 
         private void Start()
         {
             currentAttackRate = baseAttackRate;
-            currentAttackRadius = baseAttackRadius;
             StartCoroutine(ShootingCoroutine());
             animator.SetTrigger(Spawn);
 
@@ -100,17 +97,18 @@ namespace __Game.Scripts.Towers
 
         private void FixedUpdate()
         {
-            if (enemies.Count > 0 && enemies.Any(gameObj => gameObj != null))
+            currentTargetMob = GetCurrentTargetMob();
+            if (currentTargetMob != null)
             {
-                closestToExitEnemy = GetClosestToExitEnemy();
-                var dir = (closestToExitEnemy.transform.position - transform.position).normalized;
-                aimingObjectTransform.rotation =
-                    Quaternion.LookRotation(Vector3.Lerp(aimingObjectTransform.forward, dir, 0.1f), Vector3.up);
+                Aiming();
             }
-            else
-            {
-                closestToExitEnemy = null;
-            }
+        }
+
+        private void Aiming()
+        {
+            var dir = (currentTargetMob.transform.position - transform.position).normalized;
+            aimingObjectTransform.rotation =
+                Quaternion.LookRotation(Vector3.Lerp(aimingObjectTransform.forward, dir, 0.1f), Vector3.up);
         }
 
         public void OnDespawnTowerClicked()
@@ -131,34 +129,40 @@ namespace __Game.Scripts.Towers
             {
                 animator.SetFloat(ShootSpeedAnim, 1 / currentAttackRate);
 
-                if (closestToExitEnemy != null)
+                if (GetCurrentTargetMob() != null)
                 {
-                    Shoot(closestToExitEnemy.transform.position);
+                    Shoot(currentTargetMob.transform.position);
                 }
 
                 yield return new WaitForSeconds(currentAttackRate);
             }
         }
 
-        private GameObject GetClosestToExitEnemy()
+        private GameObject GetCurrentTargetMob()
         {
-            GameObject closestToExit = null;
-            for (var i = 0; i < enemies.Count; i++)
+            GameObject result = null;
+            var lastNearestDist = 1000f;
+            for (var i = 0; i < enemiesInAttackRadius.Count; i++)
             {
-                var currentEnemy = enemies[i];
-                if (closestToExit == null) closestToExit = currentEnemy;
-                if (currentEnemy != null)
+                var currentEntry = enemiesInAttackRadius[i];
+                if (currentEntry != null)
                 {
-                    var currentDist = Vector3.Distance(currentEnemy.transform.position, exitTransform.position);
-                    if (closestToExit != null &&
-                        currentDist < Vector3.Distance(closestToExit.transform.position, exitTransform.position))
+                    // check demand
+                    var mobController = currentEntry.GetComponent<MobController>();
+                    var hasDemand = mobController.productsRequire.ContainsKey(goodsSO);
+
+                    // check distance
+                    var isNearest = false;
+                    var dist = Vector3.Distance(transform.position, currentEntry.transform.position);
+                    if (dist < lastNearestDist)
                     {
-                        closestToExit = currentEnemy;
+                        isNearest = true;
                     }
+
+                    if (hasDemand && isNearest) result = currentEntry;
                 }
             }
-
-            return closestToExit;
+            return result;
         }
 
         private void Shoot(Vector3 target)

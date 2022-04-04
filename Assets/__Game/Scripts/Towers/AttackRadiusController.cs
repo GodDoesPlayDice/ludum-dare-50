@@ -18,7 +18,7 @@ namespace __Game.Scripts.Towers
         {
             if (other.gameObject.GetComponent<MobController>() != null)
             {
-                towerController.enemies.Add(other.gameObject);
+                towerController.enemiesInAttackRadius.Add(other.gameObject);
             }
         }
         
@@ -26,16 +26,7 @@ namespace __Game.Scripts.Towers
         {
             if (other.gameObject.GetComponent<MobController>() != null)
             {
-                towerController.enemies.Remove(other.gameObject);
-            }
-        }
-        
-        private void OnTriggerStay(Collider other)
-        {
-            var obj = other.gameObject;
-            if (obj.GetComponent<MobController>() != null && !towerController.enemies.Contains(obj))
-            {
-                towerController.enemies.Add(obj);
+                towerController.enemiesInAttackRadius.Remove(other.gameObject);
             }
         }
 
