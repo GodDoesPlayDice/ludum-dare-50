@@ -174,7 +174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6173113617649185550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.562, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b04f33c0d54db0a479ff97bd554380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 782792522156703228}
   attackRadiusMeshRenderer: {fileID: 8345607406425339688}
   baseAttackRadius: 3
   shootPoint: {fileID: 1826380901107609947}
@@ -202,9 +203,10 @@ MonoBehaviour:
   projectile: {fileID: 3220008107548924266, guid: cb77792025d1a4f92a64e041459f91b3,
     type: 3}
   projectileSpeed: 20
-  baseAttackRate: 1
+  baseAttackRate: 1.5
   towerPlaceController: {fileID: 0}
   enemies: []
+  currentShootDir: {x: 0, y: 0, z: 0}
 --- !u!65 &5621123811237324313
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -368,7 +370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7727423600783447562}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0.08445368, z: -0.002960318}
+  m_LocalPosition: {x: 0, y: 0.08445368, z: -0.002960318}
   m_LocalScale: {x: 7.8144946, y: 7.8144946, z: 7.8144946}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -435,6 +437,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8715284583326289349}
+  - component: {fileID: 782792522156703228}
+  - component: {fileID: 8491428293973746964}
   m_Layer: 0
   m_Name: turret-green
   m_TagString: Untagged
@@ -449,7 +453,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8338759457222317951}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -458,7 +462,40 @@ Transform:
   - {fileID: 1347394068487415848}
   m_Father: {fileID: 6173113617649185551}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &782792522156703228
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8338759457222317951}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ea3107ceca1d4c75bec7c230316f469, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8491428293973746964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8338759457222317951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0438bfa1165e49249cf7b82176581390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerController: {fileID: 194301101168466341}
 --- !u!1 &8594342561513333371
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,14 +519,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8594342561513333371}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0, y: 0.00881, z: -0.00005}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: -0, y: 0.01138, z: -0.00005}
   m_LocalScale: {x: 0.010000003, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3332606998132126492}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
 --- !u!1 &8954937999678282466
 GameObject:
   m_ObjectHideFlags: 0

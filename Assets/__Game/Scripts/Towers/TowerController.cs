@@ -13,18 +13,19 @@ namespace __Game.Scripts.Towers
     {
         #region Inspector
 
+        [SerializeField] private Animator animator;
         [SerializeField] private MeshRenderer attackRadiusMeshRenderer;
 
         [Space] [Header("Combat settings")] [Space] [SerializeField]
         private float baseAttackRadius = 3;
 
-        [SerializeField] private Transform shootPoint;
+        public Transform shootPoint;
 
         [SerializeField] private Transform aimingObjectTransform;
 
-        [SerializeField] private GameObject projectile;
+        public GameObject projectile;
 
-        [SerializeField] private float projectileSpeed;
+        public float projectileSpeed;
 
         [SerializeField] private float baseAttackRate = 1f;
 
@@ -42,8 +43,11 @@ namespace __Game.Scripts.Towers
         // combat fields
         public List<GameObject> enemies;
         private GameObject closestToExitEnemy;
+        public Vector3 currentShootDir;
         private float currentAttackRate;
         private float currentAttackRadius;
+        private static readonly int ShootAnimation = Animator.StringToHash("shoot");
+        private static readonly int ShootSpeedAnim = Animator.StringToHash("shoot speed");
 
         #endregion
 
@@ -90,7 +94,8 @@ namespace __Game.Scripts.Towers
             {
                 closestToExitEnemy = GetClosestToExitEnemy();
                 var dir = (closestToExitEnemy.transform.position - transform.position).normalized;
-                aimingObjectTransform.rotation = Quaternion.LookRotation(Vector3.Lerp(aimingObjectTransform.forward, dir, 0.1f), Vector3.up);
+                aimingObjectTransform.rotation =
+                    Quaternion.LookRotation(Vector3.Lerp(aimingObjectTransform.forward, dir, 0.1f), Vector3.up);
             }
             else
             {
@@ -109,6 +114,8 @@ namespace __Game.Scripts.Towers
         {
             for (;;)
             {
+                animator.SetFloat(ShootSpeedAnim, 1 / currentAttackRate);
+
                 if (closestToExitEnemy != null)
                 {
                     Shoot(closestToExitEnemy.transform.position);
@@ -138,11 +145,9 @@ namespace __Game.Scripts.Towers
 
         private void Shoot(Vector3 target)
         {
-            var spawnedProjectile = Instantiate(projectile, shootPoint.transform.position,
-                shootPoint.transform.rotation, shootPoint);
-            var rb = spawnedProjectile.GetComponent<Rigidbody>();
-            var dir = (target - shootPoint.transform.position).normalized;
-            rb.velocity = dir * projectileSpeed;
+            target.y = 1.5f;
+            currentShootDir = (target - shootPoint.transform.position).normalized;
+            animator.SetTrigger(ShootAnimation);
         }
 
         #endregion
