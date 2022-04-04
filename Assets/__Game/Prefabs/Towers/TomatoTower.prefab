@@ -286,7 +286,7 @@ MonoBehaviour:
   attackRadiusMeshRenderer: {fileID: 8345607406425339688}
   shootPoint: {fileID: 1826380901107609947}
   aimingObjectTransform: {fileID: 1244977163854451013}
-  projectileSpeed: 15
+  projectileSpeed: 22
   baseAttackRate: 1
   currentLevel: 0
   currentSellPrice: 0
