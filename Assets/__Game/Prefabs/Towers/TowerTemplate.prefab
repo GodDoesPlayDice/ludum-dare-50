@@ -1563,7 +1563,7 @@ MonoBehaviour:
   aimingObjectTransform: {fileID: 3103476434434183027}
   projectile: {fileID: 3220008107548924266, guid: cb77792025d1a4f92a64e041459f91b3,
     type: 3}
-  projectileSpeed: 15
+  projectileSpeed: 20
   baseAttackRate: 1
   towerPlaceController: {fileID: 0}
   enemies: []
