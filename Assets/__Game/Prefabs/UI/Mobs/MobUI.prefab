@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3449402173557422200}
   - component: {fileID: 2499068175343693841}
   - component: {fileID: 8640459373902398162}
+  - component: {fileID: 5811246598031821803}
   m_Layer: 0
   m_Name: MobUI
   m_TagString: Untagged
@@ -83,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8640459373902398162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +102,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5811246598031821803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859218185663098093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff9483ab5d64cac9f574f6b2e7526b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8567827297680116442
 GameObject:
   m_ObjectHideFlags: 0

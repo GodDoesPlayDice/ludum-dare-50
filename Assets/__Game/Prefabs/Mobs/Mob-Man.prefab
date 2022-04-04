@@ -3796,6 +3796,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2499068175343693841, guid: 3fa41981e723e4ea48592e08bca39792,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2499068175343693841, guid: 3fa41981e723e4ea48592e08bca39792,
+        type: 3}
+      propertyPath: m_DynamicPixelsPerUnit
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 2942136818259733557, guid: 3fa41981e723e4ea48592e08bca39792,
         type: 3}
       propertyPath: m_AnchorMax.y
